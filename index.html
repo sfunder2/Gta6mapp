@@ -101,6 +101,21 @@ dialog h2{font-family:var(--font-display);margin:0 0 12px;font-size:20px}
 textarea.json{font-family:var(--font-mono);font-size:11.5px;min-height:200px;width:100%;box-sizing:border-box}
 .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .toggle-panel{display:none}
+.progress{display:flex;flex-direction:column;gap:6px}
+.progress .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress .bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.progress .row2{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-family:var(--font-mono)}
+.mini{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mini .btn{padding:4px 8px;font-size:11.5px}
+.switch{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer}
+.cat .n b{color:var(--fg);font-weight:600}
+.item.found b{text-decoration:line-through;opacity:.6}
+.item{grid-template-columns:12px 1fr auto}
+.item .chk{grid-row:1/3;grid-column:3;align-self:center}
+.fbtn{width:24px;height:24px;border-radius:6px;border:1.5px solid var(--line);display:grid;place-items:center;background:transparent;color:var(--accent);font-size:14px;line-height:1;cursor:pointer;padding:0}
+.fbtn.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pin.found{opacity:.4;filter:grayscale(.6)}
+.pop .actions{display:flex;gap:6px;flex-wrap:wrap}
 @media (max-width:760px){
   .app{grid-template-columns:1fr;grid-template-rows:auto 1fr}
   aside{border-right:0;border-bottom:1px solid var(--line);padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;max-height:52vh}
@@ -126,8 +141,14 @@ textarea.json{font-family:var(--font-mono);font-size:11.5px;min-height:200px;wid
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Yer ara: Vice City, Kalaga…" autocomplete="off">
     </div>
+    <div class="progress collapsible">
+      <div class="row2"><span>İlerleme</span><span id="progTxt">0 / 0</span></div>
+      <div class="bar"><i id="progBar" style="width:0%"></i></div>
+    </div>
     <div class="collapsible">
-      <p class="label">Kategoriler</p>
+      <div class="mini" style="margin-bottom:6px"><p class="label" style="margin:0;margin-right:auto">Kategoriler</p>
+        <button class="btn" id="showAll" type="button">Hepsi</button><button class="btn" id="hideAll" type="button">Hiçbiri</button></div>
+      <label class="switch" style="margin:0 0 8px"><input type="checkbox" id="hideFound"> Bulunanları gizle</label>
       <div class="cats" id="cats"></div>
     </div>
     <div class="collapsible">
@@ -233,6 +254,10 @@ const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 let mine=(load(STORE)||[]).filter(m=>m&&typeof m.x==="number");
 let active=new Set(load(STORE+"-cats")||Object.keys(CATS));
 let query="";
+let found=new Set(load(STORE+"-found")||[]);
+let hideFound=!!load(STORE+"-hidefound");
+const saveFound=()=>save(STORE+"-found",[...found]);
+function toggleFound(id){found.has(id)?found.delete(id):found.add(id);saveFound();render();const mk=markerById[id];if(mk)mk.openPopup()}
 
 // ---- Hand-drawn base map (SVG) ----
 const NS="http://www.w3.org/2000/svg";
@@ -261,10 +286,10 @@ svg.innerHTML=`
 </g>
 <path fill="var(--lake)" stroke="var(--land-edge)" stroke-width="1.5" d="M511.1 1109.7 511.1 1113.9 518.4 1115.4 527.3 1120.6 535.1 1120.6 536.1 1118.6 540.3 1118.6 549.6 1121.7 575.7 1118.6 588.7 1125.3 594.9 1125.3 597.0 1130.5 614.2 1130.5 612.6 1122.2 608.5 1121.7 607.9 1117.5 600.1 1111.8 595.5 1111.8 592.8 1109.2 592.3 1105.0 585.0 1105.0 584.5 1099.3 581.4 1097.2 515.8 1096.7Z M913.0 559.0 902.0 557.5 901.0 559.5 895.3 559.5 894.7 563.2 886.4 563.2 882.2 567.3 881.7 577.2 877.0 577.2 876.0 570.5 872.9 570.5 872.9 576.2 870.3 576.7 868.7 580.4 860.9 579.8 860.9 587.1 855.7 588.2 855.2 594.9 846.9 596.0 841.1 594.4 837.5 590.2 832.3 589.7 832.3 626.7 829.2 628.2 826.0 636.0 825.5 644.9 833.3 657.9 834.9 669.9 845.8 671.4 848.4 682.4 854.7 682.9 854.7 690.7 889.5 686.5 891.6 683.4 898.4 682.4 902.0 678.7 902.5 670.9 910.4 670.9 915.6 667.8 917.1 661.6 920.2 661.0 920.2 656.3 923.9 655.3 924.4 648.0 934.3 640.7 934.8 630.8 942.6 626.7 942.6 623.6 940.5 622.0 941.1 602.7 935.9 582.4 923.9 571.5 919.7 570.5 919.7 567.3 913.5 563.7Z"/>
 <g fill="var(--label)" opacity=".28"><rect x="740" y="1105" width="150" height="10" rx="3" transform="rotate(18 815 1110)"/><rect x="740" y="1140" width="150" height="10" rx="3" transform="rotate(18 815 1145)"/></g>
-<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="var(--road)" stroke-width="5" d="M1000 440 L1050 560 L1075 650 L1095 760 L1060 850 L1010 930 L990 967 L975 1050 L960 1120 L945 1205 L920 1290 L898 1325 M840 500 L815 590 L800 700 L803 790 L800 900 L803 1025 L830 1090 L870 1200 L898 1323 L860 1400 L840 1490 L880 1550 L905 1580 M430 580 L465 650 L480 758 L470 880 L480 988 L540 1030 L731 1043 L803 1030 L900 1015 L990 967 M430 575 L520 545 L611 545 L700 525 L830 533 L950 495 L1000 440"/>
-  <path stroke="var(--road)" stroke-width="3" opacity=".8" d="M530 436 L606 447 L700 370 L857 337 L950 345 L990 420 M517 825 L600 800 L803 789 L858 812 L1000 800 L1090 790 M720 760 L614 898 L530 990 L460 1070 L470 1150 L500 1200 M470 1110 L587 1217 L700 1262 L830 1275 L898 1323 M975 1105 L1100 1090 L1200 1065 M1060 850 L1150 880 L1240 890 M898 1330 L990 1395 L1012 1382"/>
-  <path stroke="var(--road)" stroke-width="3.5" stroke-dasharray="10 7" d="M905 1580 L870 1625 L820 1670 L760 1715 L700 1745 L650 1775 L580 1755 L520 1740 L460 1735"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" style="vector-effect:non-scaling-stroke">
+  <path vector-effect="non-scaling-stroke" stroke="var(--road)" stroke-width="3.5" d="M1000 440 L1050 560 L1075 650 L1095 760 L1060 850 L1010 930 L990 967 L975 1050 L960 1120 L945 1205 L920 1290 L898 1325 M840 500 L815 590 L800 700 L803 790 L800 900 L803 1025 L830 1090 L870 1200 L898 1323 L860 1400 L840 1490 L880 1550 L905 1580 M430 580 L465 650 L480 758 L470 880 L480 988 L540 1030 L731 1043 L803 1030 L900 1015 L990 967 M430 575 L520 545 L611 545 L700 525 L830 533 L950 495 L1000 440"/>
+  <path vector-effect="non-scaling-stroke" stroke="var(--road)" stroke-width="2" opacity=".8" d="M530 436 L606 447 L700 370 L857 337 L950 345 L990 420 M517 825 L600 800 L803 789 L858 812 L1000 800 L1090 790 M720 760 L614 898 L530 990 L460 1070 L470 1150 L500 1200 M470 1110 L587 1217 L700 1262 L830 1275 L898 1323 M975 1105 L1100 1090 L1200 1065 M1060 850 L1150 880 L1240 890 M898 1330 L990 1395 L1012 1382"/>
+  <path vector-effect="non-scaling-stroke" stroke="var(--road)" stroke-width="2.5" stroke-dasharray="6 5" d="M905 1580 L870 1625 L820 1670 L760 1715 L700 1745 L650 1775 L580 1755 L520 1740 L460 1735"/>
 </g>
 <g font-family="JetBrains Mono, monospace" font-size="18" fill="var(--label)" opacity=".7" letter-spacing="3">
   <text x="140" y="1280">GULF OF LEONIDA</text>
@@ -295,18 +320,20 @@ const markerById={};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const all=()=>SEED.concat(mine);
 const matches=m=>{if(!query)return true;const q=query.toLocaleLowerCase("tr");return (m.ad+" "+(m.not||"")+" "+CATS[m.cat].ad).toLocaleLowerCase("tr").includes(q)};
-const visible=m=>active.has(m.cat)&&matches(m);
+const visible=m=>active.has(m.cat)&&matches(m)&&!(hideFound&&found.has(m.id));
 
 function icon(m){
   return L.divIcon({className:"",iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-22],
-    html:`<div class="pin" style="background:${catColor(m.cat)}"><i>${CATS[m.cat].harf}</i></div>`});
+    html:`<div class="pin${found.has(m.id)?" found":""}" style="background:${catColor(m.cat)}"><i>${CATS[m.cat].harf}</i></div>`});
 }
 function popup(m){
   const isMine=m.cat==="kullanici"||String(m.id).startsWith("u");
   return `<div class="pop"><h3>${esc(m.ad)}</h3>
   <div class="meta">${esc(CATS[m.cat].ad)} · x ${m.x} · y ${m.y}${m.durum?" · "+esc(m.durum):""}</div>
   <div>${esc(m.not||"")}</div>
-  ${isMine?`<button class="btn" data-del="${esc(m.id)}">Bu işareti sil</button>`:`<div class="src">Kaynak: Rockstar'ın resmi Leonida haritası.</div>`}</div>`;
+  <div class="actions"><button class="btn${found.has(m.id)?" on":" primary"}" data-found="${esc(m.id)}">${found.has(m.id)?"✓ Bulundu":"Bulundu olarak işaretle"}</button>
+  ${isMine?`<button class="btn" data-del="${esc(m.id)}">Sil</button>`:""}</div>
+  ${isMine?"":`<div class="src">Kaynak: Rockstar'ın resmi Leonida haritası.</div>`}</div>`;
 }
 function render(){
   layer.clearLayers();
@@ -316,11 +343,14 @@ function render(){
     mk.addTo(layer);markerById[m.id]=mk;
   });
   renderCats();renderList();
+  const tot=all().length,f=all().filter(m=>found.has(m.id)).length;
+  document.getElementById("progTxt").textContent=`${f} / ${tot} bulundu`;
+  document.getElementById("progBar").style.width=(tot?f/tot*100:0)+"%";
 }
 function renderCats(){
   const box=document.getElementById("cats");box.innerHTML="";
   Object.entries(CATS).forEach(([k,c])=>{
-    const n=all().filter(m=>m.cat===k&&matches(m)).length;
+    const inCat=all().filter(m=>m.cat===k&&matches(m));const n=`<b>${inCat.filter(m=>found.has(m.id)).length}</b>/${inCat.length}`;
     const b=document.createElement("button");
     b.className="cat";b.type="button";b.setAttribute("aria-pressed",active.has(k));
     b.innerHTML=`<span class="dot" style="background:${catColor(k)}"></span>${c.ad}<span class="n">${n}</span>`;
@@ -333,17 +363,26 @@ function renderList(){
   const items=all().filter(visible);
   if(!items.length){box.innerHTML=`<div class="empty">${query?"Aramanla eşleşen yer yok.":"Hiç kategori seçili değil."}</div>`;return}
   items.forEach(m=>{
-    const b=document.createElement("button");b.className="item";b.type="button";
-    b.innerHTML=`<span class="dot" style="background:${catColor(m.cat)}"></span><span><b>${esc(m.ad)}</b>${m.durum?`<span class="tag">${esc(m.durum)}</span>`:""}</span><small>${esc(CATS[m.cat].ad)}</small>`;
+    const b=document.createElement("div");b.className="item"+(found.has(m.id)?" found":"");b.tabIndex=0;b.setAttribute("role","button");
+    b.innerHTML=`<span class="dot" style="background:${catColor(m.cat)}"></span><span><b>${esc(m.ad)}</b>${m.durum?`<span class="tag">${esc(m.durum)}</span>`:""}</span><button class="fbtn chk${found.has(m.id)?" on":""}" type="button" aria-label="Bulundu olarak işaretle" title="Bulundu olarak işaretle">${found.has(m.id)?"✓":""}</button><small>${esc(CATS[m.cat].ad)}</small>`;
+    b.querySelector(".fbtn").onclick=ev=>{ev.stopPropagation();found.has(m.id)?found.delete(m.id):found.add(m.id);saveFound();render()};
+    b.onkeydown=ev=>{if(ev.key==="Enter"&&ev.target===b)b.onclick()};
     b.onclick=()=>{map.flyTo(toLL(m.x,m.y),Math.max(map.getZoom(),0.5),{duration:.6});setTimeout(()=>markerById[m.id]&&markerById[m.id].openPopup(),650);if(innerWidth<=760)collapse(true)};
     box.appendChild(b);
   });
 }
 map.on("popupopen",e=>{
   const btn=e.popup.getElement().querySelector("[data-del]");
-  if(btn)btn.onclick=()=>{mine=mine.filter(m=>m.id!==btn.dataset.del);save(STORE,mine);map.closePopup();render()};
+  if(btn)btn.onclick=()=>{mine=mine.filter(m=>m.id!==btn.dataset.del);found.delete(btn.dataset.del);saveFound();save(STORE,mine);map.closePopup();render()};
+  const fb=e.popup.getElement().querySelector("[data-found]");
+  if(fb)fb.onclick=()=>toggleFound(fb.dataset.found);
 });
 
+// show/hide all, hide found
+document.getElementById("showAll").onclick=()=>{active=new Set(Object.keys(CATS));save(STORE+"-cats",[...active]);render()};
+document.getElementById("hideAll").onclick=()=>{active=new Set();save(STORE+"-cats",[]);render()};
+const hf=document.getElementById("hideFound");hf.checked=hideFound;
+hf.onchange=()=>{hideFound=hf.checked;save(STORE+"-hidefound",hideFound);render()};
 // search
 const q=document.getElementById("q");
 q.addEventListener("input",()=>{query=q.value.trim();render()});
