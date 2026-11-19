@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}body{margin:0}</style>
+</head>
+<body>
+<title>Leonida Haritası</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style> .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { behavior: url(#default#VML); display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { background-image: url(images/layers.png); width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-image: url(images/layers-2x.png); background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { background-image: url(images/marker-icon.png); } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } } </style>
+<style>
+/* Layout: full-height app. Left rail = filters, search, list; right = chart-style map of Leonida drawn in SVG. */
+:root{
+  --bg:#eef3f2; --panel:#ffffff; --fg:#13262b; --muted:#5b7177; --line:#d3dfdf;
+  --sea:#9fd3d6; --sea-deep:#6cb8c0; --sea-line:#86c6cb;
+  --land:#f1e6c8; --land-edge:#c9b585; --marsh:#b9cf9a; --forest:#7fa66b; --lake:#8fcdd3;
+  --road:#e8735d; --label:#3b4c50;
+  --accent:#e0457b; --accent-ink:#ffffff;
+  --c-bolge:#e0457b; --c-simge:#f08a24; --c-doga:#2f9a5a; --c-ulasim:#3478c6; --c-kullanici:#7a4fd0;
+  --font-display:"Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1719; --panel:#132124; --fg:#e4efee; --muted:#8fa6a9; --line:#24393c;
+  --sea:#123a44; --sea-deep:#0c2b33; --sea-line:#1b4a55;
+  --land:#2a3330; --land-edge:#4c5a52; --marsh:#2f4630; --forest:#25432f; --lake:#1c4d57;
+  --road:#ff7f6a; --label:#c9d8d4;
+  --accent:#ff5c93; --accent-ink:#1a0710;
+  --c-bolge:#ff5c93; --c-simge:#ffa24a; --c-doga:#4fc47d; --c-ulasim:#5aa2f0; --c-kullanici:#a684f0;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1719; --panel:#132124; --fg:#e4efee; --muted:#8fa6a9; --line:#24393c;
+  --sea:#123a44; --sea-deep:#0c2b33; --sea-line:#1b4a55;
+  --land:#2a3330; --land-edge:#4c5a52; --marsh:#2f4630; --forest:#25432f; --lake:#1c4d57;
+  --road:#ff7f6a; --label:#c9d8d4;
+  --accent:#ff5c93; --accent-ink:#1a0710;
+  --c-bolge:#ff5c93; --c-simge:#ffa24a; --c-doga:#4fc47d; --c-ulasim:#5aa2f0; --c-kullanici:#a684f0;
+  color-scheme:dark}
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:14px}
+.app{height:100%;display:grid;grid-template-columns:320px 1fr;min-height:0}
+aside{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:16px;padding-block:18px 0;gap:14px}
+.brand h1{font-family:var(--font-display);font-weight:800;font-size:26px;letter-spacing:-.01em;margin:0;line-height:1}
+.brand h1 span{color:var(--accent)}
+.brand p{margin:6px 0 0;color:var(--muted);font-size:12.5px;line-height:1.45}
+.search{position:relative}
+.search input{width:100%;box-sizing:border-box;padding:10px 12px 10px 34px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted)}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:0 0 6px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cat{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;cursor:pointer;user-select:none;font-size:13px;background:transparent;color:var(--fg);font-family:inherit;text-align:left}
+.cat .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.cat .n{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.cat[aria-pressed="false"]{opacity:.45}
+.cat[aria-pressed="false"] .dot{background:transparent!important;box-shadow:inset 0 0 0 2px var(--muted)}
+.cat:focus-visible,.btn:focus-visible,.item:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:7px 10px;font:inherit;font-size:12.5px;font-weight:500;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.on{background:var(--fg);color:var(--panel);border-color:var(--fg)}
+.list{flex:1;min-height:0;overflow:auto;margin:0 -16px 0 0;padding-right:16px;padding-bottom:16px}
+.item{display:grid;grid-template-columns:12px 1fr;gap:4px 10px;padding:9px 8px;border-radius:8px;cursor:pointer;width:100%;border:0;background:transparent;color:inherit;text-align:left;font:inherit}
+.item:hover{background:var(--bg)}
+.item .dot{width:10px;height:10px;border-radius:50%;margin-top:4px}
+.item b{font-weight:600}
+.item small{grid-column:2;color:var(--muted);font-size:12px}
+.tag{font-family:var(--font-mono);font-size:10px;padding:1px 5px;border-radius:4px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:1px}
+.empty{color:var(--muted);font-size:13px;padding:8px}
+main{position:relative;min-width:0;min-height:0}
+#map{position:absolute;inset:0;background:var(--sea)}
+.leaflet-container{font-family:var(--font-body);background:var(--sea)}
+.hud{position:absolute;z-index:500;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.banner{position:absolute;z-index:500;top:12px;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--panel);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:500;box-shadow:0 6px 20px rgba(0,0,0,.18);white-space:nowrap}
+.pin{width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid var(--panel);box-shadow:0 2px 6px rgba(0,0,0,.35);display:grid;place-items:center}
+.pin i{transform:rotate(45deg);font-style:normal;font-size:10px;font-weight:700;color:#fff;font-family:var(--font-body)}
+.region-label{font-family:var(--font-display);font-weight:800;color:var(--label);text-transform:uppercase;letter-spacing:.14em;font-size:13px;white-space:nowrap;text-shadow:0 0 3px var(--land),0 0 6px var(--land);pointer-events:none}
+.region-label.big{font-size:17px;letter-spacing:.2em}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--panel);color:var(--fg)}
+.leaflet-popup-content{margin:12px 14px;min-width:200px;font-size:13px;line-height:1.45}
+.pop h3{font-family:var(--font-display);margin:0 0 4px;font-size:17px}
+.pop .meta{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);margin-bottom:6px}
+.pop .src{font-size:11.5px;color:var(--muted);margin-top:6px;border-top:1px solid var(--line);padding-top:6px}
+.pop button{margin-top:8px}
+.leaflet-bar a{background:var(--panel);color:var(--fg);border-bottom-color:var(--line)}
+.leaflet-control-attribution{background:var(--panel)!important;color:var(--muted)!important;font-size:10px}
+.leaflet-control-attribution a{color:var(--muted)!important}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--fg);padding:18px;width:min(420px,calc(100vw - 32px));box-sizing:border-box}
+dialog::backdrop{background:rgba(5,15,18,.45)}
+dialog h2{font-family:var(--font-display);margin:0 0 12px;font-size:20px}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field label{font-size:12px;font-weight:600;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.field textarea{resize:vertical;min-height:70px}
+textarea.json{font-family:var(--font-mono);font-size:11.5px;min-height:200px;width:100%;box-sizing:border-box}
+.row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.toggle-panel{display:none}
+@media (max-width:760px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  aside{border-right:0;border-bottom:1px solid var(--line);padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;max-height:52vh}
+  aside.collapsed .collapsible{display:none}
+  .toggle-panel{display:inline-block}
+  .brand p{display:none}
+  .brand{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .list{margin-right:-16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="app">
+  <aside id="panel">
+    <div class="brand">
+      <div>
+        <h1>LEONIDA<span>.</span>harita</h1>
+        <p>Hayran yapımı, etkileşimli GTA VI haritası. Taban harita elle çizilmiş temsili bir çizimdir; konumlar yaklaşıktır.</p>
+      </div>
+      <button class="btn toggle-panel" id="togglePanel" aria-expanded="true">Paneli gizle</button>
+    </div>
+    <div class="search collapsible">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Yer ara: Vice City, Kalaga…" autocomplete="off">
+    </div>
+    <div class="collapsible">
+      <p class="label">Kategoriler</p>
+      <div class="cats" id="cats"></div>
+    </div>
+    <div class="collapsible">
+      <p class="label">İşaretlerim</p>
+      <div class="tools">
+        <button class="btn primary" id="addBtn">+ İşaret ekle</button>
+        <button class="btn" id="exportBtn">JSON dışa aktar</button>
+        <button class="btn" id="importBtn">JSON içe aktar</button>
+      </div>
+    </div>
+    <div class="list collapsible" id="list"></div>
+  </aside>
+  <main>
+    <div id="map" aria-label="Leonida haritası"></div>
+    <div class="banner" id="banner" hidden>Haritada bir yere tıkla · Esc ile iptal</div>
+    <div class="hud" id="hud">x —  y —</div>
+  </main>
+</div>
+
+<dialog id="addDlg">
+  <form id="addForm" method="dialog">
+    <h2 id="addTitle">Yeni işaret</h2>
+    <div class="field"><label for="fName">Ad</label><input id="fName" required maxlength="80" placeholder="Örn. Sahildeki iskele"></div>
+    <div class="field"><label for="fCat">Kategori</label><select id="fCat"></select></div>
+    <div class="field"><label for="fNote">Not</label><textarea id="fNote" maxlength="500" placeholder="Ne var burada?"></textarea></div>
+    <div class="row"><button class="btn" type="button" id="addCancel">Vazgeç</button><button class="btn primary" type="submit">Kaydet</button></div>
+  </form>
+</dialog>
+
+<dialog id="jsonDlg">
+  <h2 id="jsonTitle">JSON</h2>
+  <p id="jsonHelp" style="margin:0 0 10px;color:var(--muted);font-size:12.5px"></p>
+  <textarea class="json" id="jsonArea" spellcheck="false"></textarea>
+  <div class="field" id="fileField" style="margin-top:10px"><label for="jsonFile">veya dosya seç</label><input type="file" id="jsonFile" accept="application/json,.json"></div>
+  <p id="jsonMsg" style="color:var(--accent);font-size:12.5px;min-height:1em;margin:6px 0"></p>
+  <div class="row"><button class="btn" id="jsonClose">Kapat</button><button class="btn primary" id="jsonAction">Kopyala</button></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+const W=800,H=1000;
+const toLL=(x,y)=>[H-y,x];
+const fromLL=ll=>({x:Math.round(ll.lng),y:Math.round(H-ll.lat)});
+
+const CATS={
+  bolge:{ad:"Bölgeler",harf:"B"},
+  simge:{ad:"Simge yapılar",harf:"S"},
+  doga:{ad:"Doğa",harf:"D"},
+  ulasim:{ad:"Ulaşım",harf:"U"},
+  kullanici:{ad:"Benim işaretlerim",harf:"★"}
+};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const catColor=c=>css("--c-"+c);
+
+// Seed markers written from public facts (official Rockstar trailers and website, 2023–2025).
+// Positions are my own approximations on this hand-drawn map, not copied from any other map site.
+const SEED=[
+  {id:"s1",cat:"bolge",ad:"Vice City",x:700,y:690,durum:"resmi ad",not:"Leonida'nın büyük metropolü. Plajlar, gece hayatı ve gökdelenler. Hikâyenin merkezi."},
+  {id:"s2",cat:"bolge",ad:"Leonida Keys",x:510,y:905,durum:"resmi ad",not:"Ana karanın güneyinde uzanan ada zinciri. Tekneler, marinalar ve sığ turkuaz sular."},
+  {id:"s3",cat:"bolge",ad:"Grassrivers",x:575,y:735,durum:"resmi ad",not:"Bataklık ve sazlık bölgesi. Timsahlar ve hava botları bu tarafın simgesi."},
+  {id:"s4",cat:"bolge",ad:"Port Gellhorn",x:150,y:255,durum:"resmi ad",not:"Körfez kıyısında, eski parlak günlerini geride bırakmış bir liman kasabası."},
+  {id:"s5",cat:"bolge",ad:"Ambrosia",x:505,y:425,durum:"resmi ad",not:"İç kesimde bir sanayi kasabası. Şeker rafinerisi ve motorcu kulübüyle anılıyor."},
+  {id:"s6",cat:"bolge",ad:"Mount Kalaga Ulusal Parkı",x:470,y:120,durum:"resmi ad",not:"Kuzeydeki ormanlık ulusal park. Patikalar, nehirler ve av alanları."},
+  {id:"s7",cat:"simge",ad:"Vice Beach sahil şeridi",x:745,y:650,durum:"yaklaşık",not:"Okyanus tarafındaki uzun plaj şeridi ve sahil oteli sırası."},
+  {id:"s8",cat:"simge",ad:"Vice City şehir merkezi",x:672,y:712,durum:"yaklaşık",not:"Gökdelenlerin toplandığı finans ve iş merkezi."},
+  {id:"s9",cat:"simge",ad:"Ambrosia şeker rafinerisi",x:540,y:448,durum:"yaklaşık",not:"Kasabanın ekonomisini taşıyan büyük fabrika tesisi."},
+  {id:"s10",cat:"doga",ad:"Grassrivers hava botu rotası",x:530,y:775,durum:"yaklaşık",not:"Sazlıkların içinden geçen kanallar. Hava botuyla gezilecek yer."},
+  {id:"s11",cat:"doga",ad:"Kalaga orman patikaları",x:410,y:165,durum:"yaklaşık",not:"Ulusal parkın içindeki yürüyüş ve av alanları."},
+  {id:"s12",cat:"doga",ad:"Büyük göl",x:585,y:455,durum:"temsili",not:"Haritadaki iç göl temsili çizimdir; oyundaki gerçek şekli doğrulanmalı."},
+  {id:"s13",cat:"ulasim",ad:"Keys deniz köprüsü",x:585,y:858,durum:"yaklaşık",not:"Adaları ana karaya bağlayan uzun deniz köprüsü."},
+  {id:"s14",cat:"ulasim",ad:"Port Gellhorn limanı",x:120,y:285,durum:"yaklaşık",not:"Körfeze açılan eski liman ve iskeleler."},
+  {id:"s15",cat:"ulasim",ad:"Doğu kıyı otoyolu",x:752,y:420,durum:"temsili",not:"Vice City'yi kuzeye bağlayan kıyı otoyolu (haritada temsili çizildi)."}
+];
+
+const STORE="leonida-harita-v1";
+const load=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let mine=(load(STORE)||[]).filter(m=>m&&typeof m.x==="number");
+let active=new Set(load(STORE+"-cats")||Object.keys(CATS));
+let query="";
+
+// ---- Hand-drawn base map (SVG) ----
+const NS="http://www.w3.org/2000/svg";
+const svg=document.createElementNS(NS,"svg");
+svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+svg.setAttribute("xmlns",NS);
+svg.innerHTML=`
+<defs>
+  <pattern id="marsh" width="14" height="10" patternUnits="userSpaceOnUse">
+    <rect width="14" height="10" fill="var(--marsh)"/>
+    <path d="M2 8 v-4 M5 8 v-5 M8 8 v-3 M11 8v-4" stroke="var(--forest)" stroke-width="1" opacity=".7"/>
+  </pattern>
+  <pattern id="trees" width="16" height="16" patternUnits="userSpaceOnUse">
+    <rect width="16" height="16" fill="var(--forest)"/>
+    <circle cx="5" cy="5" r="3" fill="var(--land)" opacity=".18"/><circle cx="12" cy="12" r="3" fill="var(--land)" opacity=".18"/>
+  </pattern>
+</defs>
+<rect width="${W}" height="${H}" fill="var(--sea)"/>
+<g fill="none" stroke="var(--sea-line)" stroke-width="1.2">
+  <path d="M0 360 C120 330 200 360 290 420 S 380 640 470 760 S 560 870 640 880 S 760 820 800 760"/>
+  <path d="M0 420 C110 400 200 430 260 480 S 340 680 430 800 S 560 930 660 930 S 780 880 800 840"/>
+  <path d="M0 500 C100 480 180 520 230 580 S 300 760 400 860 S 540 990 700 980"/>
+</g>
+<path id="land" fill="var(--land)" stroke="var(--land-edge)" stroke-width="2.5" stroke-linejoin="round" d="
+ M0 0 L800 0 L800 40 C792 120 782 200 774 280 C768 350 762 410 752 470 C744 530 735 585 724 630
+ C716 662 712 690 704 720 C694 760 680 790 652 812 C630 828 604 832 578 822 C548 810 520 786 498 752
+ C476 718 452 680 432 640 C410 598 392 560 374 512 C358 470 344 440 326 410 C306 378 282 350 250 330
+ C214 310 176 300 138 300 C96 300 50 306 0 312 Z"/>
+<path fill="url(#trees)" opacity=".95" d="M330 60 C380 30 470 30 540 50 C600 70 630 120 610 170 C590 220 520 230 460 222 C400 214 340 196 318 150 C304 120 306 80 330 60 Z"/>
+<g fill="none" stroke="var(--land)" stroke-width="1" opacity=".55">
+  <path d="M400 110 C430 90 480 92 510 110 C530 130 510 160 470 165 C430 168 395 150 400 110 Z"/>
+  <path d="M430 118 C450 108 480 110 490 122 C495 138 470 146 450 144 C432 140 424 130 430 118 Z"/>
+</g>
+<path fill="url(#marsh)" d="M470 650 C500 630 560 640 610 650 C650 660 670 690 668 730 C664 770 640 800 600 810 C560 815 526 790 506 760 C486 730 462 690 470 650 Z" opacity=".95"/>
+<ellipse cx="585" cy="455" rx="48" ry="36" fill="var(--lake)" stroke="var(--land-edge)" stroke-width="1.5"/>
+<g fill="none" stroke="var(--lake)" stroke-width="3" stroke-linecap="round">
+  <path d="M470 220 C480 280 520 330 560 420"/>
+  <path d="M600 490 C610 540 600 600 590 650"/>
+  <path d="M300 200 C260 240 220 270 190 300"/>
+</g>
+<g fill="var(--land)" stroke="var(--land-edge)" stroke-width="2">
+  <path d="M590 852 c10 -6 24 -6 30 2 c-6 8 -22 10 -30 -2 z"/>
+  <path d="M548 872 c12 -8 30 -6 34 2 c-8 10 -28 10 -34 -2 z"/>
+  <path d="M500 892 c14 -8 34 -6 38 4 c-10 10 -32 8 -38 -4 z"/>
+  <path d="M452 912 c12 -6 30 -4 34 4 c-8 8 -28 8 -34 -4 z"/>
+  <path d="M404 932 c12 -6 28 -4 32 4 c-8 8 -26 8 -32 -4 z"/>
+  <path d="M362 950 c10 -5 22 -3 26 4 c-6 7 -20 6 -26 -4 z"/>
+  <path d="M738 610 c4 -20 6 -40 8 -60 l6 0 c-2 24 -4 44 -8 64 z"/>
+</g>
+<g fill="none" stroke="var(--road)" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke-width="3.5" d="M740 60 C736 200 728 340 716 470 C708 560 696 640 684 700"/>
+  <path stroke-width="3" d="M150 270 C250 260 360 300 440 380 C500 430 560 440 640 470 C690 490 712 500 716 500"/>
+  <path stroke-width="2.5" d="M684 700 C660 760 630 800 610 830"/>
+  <path stroke-width="2" stroke-dasharray="6 5" d="M610 830 C580 860 540 880 500 896 C460 914 420 930 380 950"/>
+  <path stroke-width="2" d="M470 220 C480 300 500 360 505 425"/>
+</g>
+<g fill="var(--road)" opacity=".18">
+  <rect x="650" y="680" width="40" height="44" rx="4"/>
+  <rect x="694" y="664" width="22" height="40" rx="3"/>
+</g>
+<g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--label)" opacity=".7">
+  <text x="70" y="560">KÖRFEZ</text>
+  <text x="770" y="900" text-anchor="end">OKYANUS</text>
+</g>
+<g transform="translate(60,880)" opacity=".75">
+  <circle r="34" fill="none" stroke="var(--label)" stroke-width="1"/>
+  <path d="M0 -30 L7 0 L0 30 L-7 0 Z" fill="var(--label)" opacity=".85"/>
+  <text y="-38" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="13" fill="var(--label)">K</text>
+</g>`;
+
+const bounds=[[0,0],[H,W]];
+const map=L.map("map",{crs:L.CRS.Simple,minZoom:-1.5,maxZoom:2.5,zoomSnap:.25,zoomControl:true,maxBounds:[[-150,-150],[H+150,W+150]],attributionControl:true});
+L.svgOverlay(svg,bounds,{interactive:false}).addTo(map);
+map.attributionControl.setPrefix(false).addAttribution("Hayran yapımı · resmi değildir · taban harita temsili çizim");
+map.fitBounds(bounds,{padding:[10,10]});
+
+// region labels
+const LABELS=[["VICE CITY",708,742,true],["LEONIDA KEYS",470,960,false],["GRASSRIVERS",548,668,false],["PORT GELLHORN",235,232,false],["AMBROSIA",470,478,false],["MOUNT KALAGA",470,85,false]];
+const labelLayer=L.layerGroup().addTo(map);
+LABELS.forEach(([t,x,y,big])=>L.marker(toLL(x,y),{interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="region-label${big?" big":""}" style="transform:translate(-50%,-50%)">${t}</div>`,iconSize:[0,0]})}).addTo(labelLayer));
+
+// ---- markers ----
+const layer=L.layerGroup().addTo(map);
+const markerById={};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const all=()=>SEED.concat(mine);
+const matches=m=>{if(!query)return true;const q=query.toLocaleLowerCase("tr");return (m.ad+" "+(m.not||"")+" "+CATS[m.cat].ad).toLocaleLowerCase("tr").includes(q)};
+const visible=m=>active.has(m.cat)&&matches(m);
+
+function icon(m){
+  return L.divIcon({className:"",iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-22],
+    html:`<div class="pin" style="background:${catColor(m.cat)}"><i>${CATS[m.cat].harf}</i></div>`});
+}
+function popup(m){
+  const isMine=m.cat==="kullanici"||String(m.id).startsWith("u");
+  return `<div class="pop"><h3>${esc(m.ad)}</h3>
+  <div class="meta">${esc(CATS[m.cat].ad)} · x ${m.x} · y ${m.y}${m.durum?" · "+esc(m.durum):""}</div>
+  <div>${esc(m.not||"")}</div>
+  ${isMine?`<button class="btn" data-del="${esc(m.id)}">Bu işareti sil</button>`:`<div class="src">Kaynak: Rockstar'ın resmi fragmanları ve sitesi. Konum bu çizim üzerinde yaklaşık.</div>`}</div>`;
+}
+function render(){
+  layer.clearLayers();
+  for(const k in markerById)delete markerById[k];
+  all().filter(visible).forEach(m=>{
+    const mk=L.marker(toLL(m.x,m.y),{icon:icon(m),title:m.ad,alt:m.ad}).bindPopup(popup(m));
+    mk.addTo(layer);markerById[m.id]=mk;
+  });
+  renderCats();renderList();
+}
+function renderCats(){
+  const box=document.getElementById("cats");box.innerHTML="";
+  Object.entries(CATS).forEach(([k,c])=>{
+    const n=all().filter(m=>m.cat===k&&matches(m)).length;
+    const b=document.createElement("button");
+    b.className="cat";b.type="button";b.setAttribute("aria-pressed",active.has(k));
+    b.innerHTML=`<span class="dot" style="background:${catColor(k)}"></span>${c.ad}<span class="n">${n}</span>`;
+    b.onclick=()=>{active.has(k)?active.delete(k):active.add(k);save(STORE+"-cats",[...active]);render()};
+    box.appendChild(b);
+  });
+}
+function renderList(){
+  const box=document.getElementById("list");box.innerHTML="";
+  const items=all().filter(visible);
+  if(!items.length){box.innerHTML=`<div class="empty">${query?"Aramanla eşleşen yer yok.":"Hiç kategori seçili değil."}</div>`;return}
+  items.forEach(m=>{
+    const b=document.createElement("button");b.className="item";b.type="button";
+    b.innerHTML=`<span class="dot" style="background:${catColor(m.cat)}"></span><span><b>${esc(m.ad)}</b>${m.durum?`<span class="tag">${esc(m.durum)}</span>`:""}</span><small>${esc(CATS[m.cat].ad)}</small>`;
+    b.onclick=()=>{map.flyTo(toLL(m.x,m.y),Math.max(map.getZoom(),1),{duration:.6});setTimeout(()=>markerById[m.id]&&markerById[m.id].openPopup(),650);if(innerWidth<=760)collapse(true)};
+    box.appendChild(b);
+  });
+}
+map.on("popupopen",e=>{
+  const btn=e.popup.getElement().querySelector("[data-del]");
+  if(btn)btn.onclick=()=>{mine=mine.filter(m=>m.id!==btn.dataset.del);save(STORE,mine);map.closePopup();render()};
+});
+
+// search
+const q=document.getElementById("q");
+q.addEventListener("input",()=>{query=q.value.trim();render()});
+q.addEventListener("keydown",e=>{if(e.key==="Enter"){const f=all().filter(visible)[0];if(f){map.flyTo(toLL(f.x,f.y),1.25,{duration:.6});setTimeout(()=>markerById[f.id]&&markerById[f.id].openPopup(),650)}}});
+
+// coords HUD
+const hud=document.getElementById("hud");
+map.on("mousemove",e=>{const p=fromLL(e.latlng);hud.textContent=`x ${p.x}  y ${p.y}`});
+
+// add mode
+let adding=false,pending=null;
+const addBtn=document.getElementById("addBtn"),banner=document.getElementById("banner");
+const dlg=document.getElementById("addDlg"),fCat=document.getElementById("fCat");
+Object.entries(CATS).forEach(([k,c])=>{const o=document.createElement("option");o.value=k;o.textContent=c.ad;if(k==="kullanici")o.selected=true;fCat.appendChild(o)});
+function setAdding(v){adding=v;banner.hidden=!v;addBtn.classList.toggle("on",v);addBtn.textContent=v?"İptal":"+ İşaret ekle";document.getElementById("map").style.cursor=v?"crosshair":""}
+addBtn.onclick=()=>{setAdding(!adding);if(adding&&innerWidth<=760)collapse(true)};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&adding)setAdding(false)});
+map.on("click",e=>{
+  if(!adding)return;
+  pending=fromLL(e.latlng);
+  if(pending.x<0||pending.y<0||pending.x>W||pending.y>H){return}
+  document.getElementById("addTitle").textContent=`Yeni işaret · x ${pending.x}, y ${pending.y}`;
+  document.getElementById("fName").value="";document.getElementById("fNote").value="";
+  dlg.showModal();setTimeout(()=>document.getElementById("fName").focus(),30);
+});
+document.getElementById("addCancel").onclick=()=>dlg.close();
+document.getElementById("addForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const ad=document.getElementById("fName").value.trim();if(!ad||!pending)return;
+  const m={id:"u"+Date.now().toString(36),cat:fCat.value,ad,not:document.getElementById("fNote").value.trim(),x:pending.x,y:pending.y,durum:"benim"};
+  mine.push(m);save(STORE,mine);active.add(m.cat);dlg.close();setAdding(false);render();
+  setTimeout(()=>markerById[m.id]&&markerById[m.id].openPopup(),50);
+});
+
+// JSON export / import
+const jd=document.getElementById("jsonDlg"),ja=document.getElementById("jsonArea"),jm=document.getElementById("jsonMsg"),jAct=document.getElementById("jsonAction"),jf=document.getElementById("fileField");
+let jmode="export";
+document.getElementById("exportBtn").onclick=()=>{
+  jmode="export";document.getElementById("jsonTitle").textContent="İşaretlerini dışa aktar";
+  document.getElementById("jsonHelp").textContent="Kendi eklediğin işaretler aşağıda. Kopyalayıp bir .json dosyasına kaydedebilir ya da başka cihazda içe aktarabilirsin.";
+  ja.value=JSON.stringify(mine,null,2);ja.readOnly=true;jf.hidden=true;jAct.textContent="Kopyala";jm.textContent="";jd.showModal();
+};
+document.getElementById("importBtn").onclick=()=>{
+  jmode="import";document.getElementById("jsonTitle").textContent="İşaret içe aktar";
+  document.getElementById("jsonHelp").textContent='Bir dizi yapıştır: [{"ad":"…","cat":"kullanici","x":400,"y":500,"not":"…"}]. x 0–800, y 0–1000. Mevcut işaretlerine eklenir.';
+  ja.value="";ja.readOnly=false;jf.hidden=false;jAct.textContent="İçe aktar";jm.textContent="";jd.showModal();
+};
+document.getElementById("jsonFile").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{ja.value=r.result};r.readAsText(f)};
+document.getElementById("jsonClose").onclick=()=>jd.close();
+jAct.onclick=async()=>{
+  if(jmode==="export"){
+    try{await navigator.clipboard.writeText(ja.value);jm.textContent="Panoya kopyalandı."}catch(e){ja.focus();ja.select();jm.textContent="Metin seçildi, Ctrl+C ile kopyala."}
+    return;
+  }
+  try{
+    const arr=JSON.parse(ja.value);if(!Array.isArray(arr))throw new Error("Bir dizi bekleniyordu.");
+    let n=0;
+    arr.forEach((r,i)=>{
+      const x=Number(r.x),y=Number(r.y);
+      if(!r.ad||!isFinite(x)||!isFinite(y)||x<0||x>W||y<0||y>H)return;
+      mine.push({id:"u"+Date.now().toString(36)+i,cat:CATS[r.cat]?r.cat:"kullanici",ad:String(r.ad).slice(0,80),not:String(r.not||"").slice(0,500),x:Math.round(x),y:Math.round(y),durum:"benim"});n++;
+    });
+    save(STORE,mine);render();jm.textContent=`${n} işaret eklendi.`;
+  }catch(e){jm.textContent="JSON okunamadı: "+e.message}
+};
+
+// mobile panel
+const panel=document.getElementById("panel"),tp=document.getElementById("togglePanel");
+function collapse(v){panel.classList.toggle("collapsed",v);tp.textContent=v?"Paneli göster":"Paneli gizle";tp.setAttribute("aria-expanded",!v);setTimeout(()=>map.invalidateSize(),50)}
+tp.onclick=()=>collapse(!panel.classList.contains("collapsed"));
+
+// re-color pins when the theme changes
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+render();
+})();
+</script>
+
+</body>
+</html>
